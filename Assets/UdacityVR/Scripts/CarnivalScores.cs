@@ -18,6 +18,7 @@ public class CarnivalScores : MonoBehaviour {
 	private TextMeshPro coinScore;
 
 	public static CarnivalScores Instance;
+	public AudioSource winSoundSource;
 
 	private int plinkoPoints;
 	private int wheelPoints;
@@ -42,6 +43,7 @@ public class CarnivalScores : MonoBehaviour {
 		coinScore.text = "Coins: " + coinPoints.ToString("0000");
 
 		if (plinkoPoints + wheelPoints + coinPoints >= TeddyBearPointsMin) {
+			if (!TeddyBear.activeInHierarchy && !winSoundSource.isPlaying){ winSoundSource.Play();}
 			TeddyBear.SetActive(true);
 		}
 	}
